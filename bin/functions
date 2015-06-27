@@ -1,0 +1,7 @@
+log_heading() {
+  echo "-----> " $1
+}
+
+log_line() {
+  echo "       " $1
+}

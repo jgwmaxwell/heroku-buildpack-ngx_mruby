@@ -1,0 +1,12 @@
+#!/bin/bash
+
+BUILD_DIR=$1
+
+source $(dirname $0)/functions
+
+if [ ! -f $BUILD_DIR/Procfile ]; then
+log_line "Writing default Procfile"
+tee $BUILD_DIR/Procfile <<-'EOF' > /dev/null
+web: sh -c '/app/bin/__prepare_app && /app/sbin/nginx -c /app/nginx.conf -g "daemon off;"'
+EOF
+fi
